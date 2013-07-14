@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="deanModule">
+<html ng-app="deanModule" dir="rtl">
 <head>
 	<title>Welcome to Dean Shub's world</title>
 	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
@@ -7,14 +7,48 @@
 	<script type="text/javascript" src="js\lib\angular.min.js"></script>
 	<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="js\lib\bootstrap.min.js"></script>
+	<meta charset="windows-1255">
 
+<style>
+.try:hover
+{
+ opacity:0.5;
+ content:"bla";
+ color:red;
+}
+.try:hover .imgText
+{ 
+	text-align:center; 
+	margin-top: -2.5em;
+	font-size: 3em;
+	display:block;
+	color:red;
+}
+
+.imgText 
+{
+	display:none;
+}
+
+</style>
 </head>
 <body>
-<a href="#/" >intro</a>
-<a href="#/thoughts" >thoughts</a>
-<div ng-view>
-here comes the shit
-</div>
+	<div class="navbar pull-right" style="padding-right:1em">
+		<form class="navbar-search">
+			חפש:
+			<input type="text" class="search-query" placeholder="חפש"  ng-model="filter.name">
+
+
+		</form>
+		<!--<a href="#/" >intro</a>
+		<a href="#/thoughts" >thoughts</a>-->
+	</div>
+	<br>
+
+	<!-- The Thumbnails will apeare here -->
+	<div ng-view style="position:absolute; top:3em">
+		Here are the thumbnails
+	</div>
 
 
 <script type="text/javascript">
@@ -25,7 +59,7 @@ deanModule.config(function ($routeProvider) {
 	$routeProvider
 	.when('/',{
 		controller:'simpleCtrl',
-		templateUrl: 'views/intro.html'
+		templateUrl: 'views/thoughts.html'
 	})
 	.when('/talks',{
 		controller:'simpleCtrl',
@@ -47,20 +81,20 @@ deanModule.config(function ($routeProvider) {
 var controllers = {};
 
 controllers.simpleCtrl = function ($scope) {
-	$scope.thoughts = [
-		{title:"one plus one",desc:"its amazing how one plus one equeles two"},
-		{title:"because",desc:"big elephant cant always use"},
-		{title:"angular",desc:"angular seem to rock but just for now"},
-		{title:"menu",desc:"i need to find a menu in jquery"},
-		{title:"bootstarp",desc:"learn and add bootstrap to this shit"}];
+	$scope.presentations = [
+		{thumbnail:"bla.jpg", desc:"first"},
+		{thumbnail:"bla2.jpg", desc:"second"},
+		{thumbnail:"bla3.jpg", desc:"third"},
+		{thumbnail:"bla4.jpg", desc:"fourth"},
+		{thumbnail:"bla5.jpg", desc:"fifth"},
+		{thumbnail:"bla6.jpg", desc:"sixeth"},
+		{thumbnail:"bla7.jpg", desc:"seventh"}];
 
-	$scope.addThought = function() {
+	$scope.addPresentation = function() {
 		$scope.thoughts.push({
-			title: $scope.newThought.title,
-			desc: $scope.newThought.desc
+			title: $scope.newPresentation.thumbnail,
+			desc: $scope.newPresentation.desc
 		});
-		$scope.newThought.title="";
-		$scope.newThought.desc="";
 	};
 };
 
