@@ -1,0 +1,21 @@
+<div>
+	search:<input type="text" ng-model="filter.name" />
+	<br/>
+	<h1>thoughts</h1>
+	<ul>
+		<li ng-repeat="thought in thoughts | filter:filter.name">
+			<b>{{thought.title}}</b><br/>{{thought.desc}}
+		</li>
+	</ul>
+
+	<br/>
+	thought title:
+	<br/> 
+	<input style="width:50%;" type="text" ng-model="newThought.title" />
+	<br/>
+	thought description: 
+	<br/>
+	<textarea style="width:90%;height:150px;" ng-model="newThought.desc"></textarea>
+	<br/>
+	<button ng-click="addThought()">Add Thought</button>
+</div>

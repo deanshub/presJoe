@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="deanModule">
+<head>
+	<title>Welcome to Dean Shub's world</title>
+	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css\bootstrap-responsive.min.css">
+	<script type="text/javascript" src="js\lib\angular.min.js"></script>
+	<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js\lib\bootstrap.min.js"></script>
+
+</head>
+<body>
+<a href="#/" >intro</a>
+<a href="#/thoughts" >thoughts</a>
+<div ng-view>
+here comes the shit
+</div>
+
+
+<script type="text/javascript">
+var deanModule = angular.module('deanModule',[]);
+
+//routes section
+deanModule.config(function ($routeProvider) {
+	$routeProvider
+	.when('/',{
+		controller:'simpleCtrl',
+		templateUrl: 'views/intro.html'
+	})
+	.when('/talks',{
+		controller:'simpleCtrl',
+		templateUrl: 'talks.html'
+	})
+	.when('/thoughts',{
+		controller:'simpleCtrl',
+		templateUrl: 'views/thoughts.html'
+	})
+	.when('/endorsments',{
+		controller:'simpleCtrl',
+		templateUrl: 'endorsments.html'
+	})
+	.otherwise({redirectTo:'/thoughts'});
+});
+
+
+// controlers section
+var controllers = {};
+
+controllers.simpleCtrl = function ($scope) {
+	$scope.thoughts = [
+		{title:"one plus one",desc:"its amazing how one plus one equeles two"},
+		{title:"because",desc:"big elephant cant always use"},
+		{title:"angular",desc:"angular seem to rock but just for now"},
+		{title:"menu",desc:"i need to find a menu in jquery"},
+		{title:"bootstarp",desc:"learn and add bootstrap to this shit"}];
+
+	$scope.addThought = function() {
+		$scope.thoughts.push({
+			title: $scope.newThought.title,
+			desc: $scope.newThought.desc
+		});
+		$scope.newThought.title="";
+		$scope.newThought.desc="";
+	};
+};
+
+
+deanModule.controller(controllers);
+</script>
+<!-- http://www.youtube.com/watch?v=i9MHigUZKEM&feature=player_embedded 
+49:20
+-->
+</body>
+</html>
