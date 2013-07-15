@@ -10,12 +10,31 @@
 	<meta charset="windows-1255">
 
 <style>
-.try:hover
+
+.searchMov
 {
- opacity:0.5;
- content:"bla";
- color:red;
+	transition: 500ms !important;
+	-webkit-transition: width 500ms !important;
 }
+
+#fixed {
+    height: 36em;
+    overflow: auto;
+}
+
+try
+{
+ border-radius:17px;
+}
+
+.try:hover
+{ 
+ opacity:0.5;
+ content="";
+	z-index:-1;
+box-shadow:3px -3px 5px gray inset;	
+}
+
 .try:hover .imgText
 { 
 	text-align:center; 
@@ -23,6 +42,9 @@
 	font-size: 3em;
 	display:block;
 	color:red;
+	position:relative;
+	z-index:1;
+	padding-bottom: 75px;
 }
 
 .imgText 
@@ -31,12 +53,27 @@
 }
 
 </style>
+
+<script>
+
+jQuery(document).ready(function($) {
+  $("#search-query").focus(function() {
+  	$(this).addClass("span4").removeClass("span2");
+  })
+
+  $("#search-query").blur(function() {
+  	$(this).addClass("span2").removeClass("span4");
+   })
+
+});
+
+</script>
+
 </head>
 <body>
 	<div class="navbar pull-right" style="padding-right:1em">
 		<form class="navbar-search">
-			חפש:
-			<input type="text" class="search-query" placeholder="חפש"  ng-model="filter.name">
+			<input type="text" class="span2 search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
 
 
 		</form>
@@ -48,11 +85,24 @@
 	<!-- The Thumbnails will apeare here -->
 	<div ng-view style="position:absolute; top:3em">
 		Here are the thumbnails
+	
 	</div>
 
 
 <script type="text/javascript">
 var deanModule = angular.module('deanModule',[]);
+
+
+deanModule.directive('whenScrolled', function() {
+    return function(scope, elm, attr) {
+        var raw = elm[0];
+        elm.bind('scroll', function() {
+            if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+                scope.$apply(attr.whenScrolled);
+            }
+        });
+    };
+});
 
 //routes section
 deanModule.config(function ($routeProvider) {
@@ -82,8 +132,17 @@ var controllers = {};
 
 controllers.simpleCtrl = function ($scope) {
 	$scope.presentations = [
-		{thumbnail:"bla.jpg", desc:"first"},
+		{thumbnail:"bla3.jpg", desc:"third"},
 		{thumbnail:"bla2.jpg", desc:"second"},
+		{thumbnail:"bla3.jpg", desc:"third"},
+		{thumbnail:"bla2.jpg", desc:"second"},
+		{thumbnail:"bla3.jpg", desc:"third"},
+		{thumbnail:"bla2.jpg", desc:"second"},
+		{thumbnail:"bla3.jpg", desc:"third"},
+		{thumbnail:"bla4.jpg", desc:"fourth"},
+		{thumbnail:"bla5.jpg", desc:"fifth"},
+		{thumbnail:"bla4.jpg", desc:"fourth"},
+		{thumbnail:"bla5.jpg", desc:"fifth"},
 		{thumbnail:"bla3.jpg", desc:"third"},
 		{thumbnail:"bla4.jpg", desc:"fourth"},
 		{thumbnail:"bla5.jpg", desc:"fifth"},
@@ -91,11 +150,26 @@ controllers.simpleCtrl = function ($scope) {
 		{thumbnail:"bla7.jpg", desc:"seventh"}];
 
 	$scope.addPresentation = function() {
-		$scope.thoughts.push({
-			title: $scope.newPresentation.thumbnail,
-			desc: $scope.newPresentation.desc
+		alert("Shtuty");
+		$scope.presentation.push({
+			thumbnail: title1,
+			desc: desc1
 		});
 	};
+
+	$scope.shtuty = function() {
+		alert("Shtuty");
+	};	
+
+	$scope.shtuty2 = function() {
+		alert("Bye");
+	};
+
+	$scope.loadMore = function() {
+        for (var i = 0; i < 4; i++) {
+            $scope.presentations.push({thumbnail:"bla"+(i+2)+".jpg", desc:i});
+        }
+    };	
 };
 
 
@@ -104,5 +178,6 @@ deanModule.controller(controllers);
 <!-- http://www.youtube.com/watch?v=i9MHigUZKEM&feature=player_embedded 
 49:20
 -->
+	
 </body>
 </html>

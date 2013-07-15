@@ -1,16 +1,24 @@
 <div>
+	<div id="fixed" when-scrolled="loadMore()">
+
 	<ul class="thumbnails" style="margin: initial">
-		<li ng-repeat="pres in presentations | filter:filter.name" class="span3 try">
-			<div class="thumbnail">
-				<img src="./img/{{pres.thumbnail}}" alt="{{pres.desc}}">
-				
+		<li ng-repeat="pres in presentations | filter:filter.name" class="span3">
+			<div class="thumbnail try"  ng-class="'try'">
+				<img src="./img/{{pres.thumbnail}}" alt="{{pres.desc}}">			
+				<p ng-class="'imgText'">{{pres.desc}}</p>
+	
 			</div>
-				<p class="imgText">{{pres.desc}}</p>
 		</li>
 	</ul>
 
 	<br/>
+</div>
 	<center>
 		<button ng-click="addThought()" class="btn btn-large">+</button>
 	</center>
+
+
+
+
+
 </div>
