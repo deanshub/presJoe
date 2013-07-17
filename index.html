@@ -2,96 +2,163 @@
 <html ng-app="presJoe" dir="rtl">
 <head>
 	<title>Welcome to Dean Shub's world</title>
-	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css\bootstrap-responsive.min.css">
-	<script type="text/javascript" src="js\lib\angular.min.js"></script>
 	<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js\lib\bootstrap.min.js"></script>
+	<script type="text/javascript" src="js\lib\angular.min.js"></script>
 	<meta charset="utf-8">
 
 <style>
 
-.searchMov
-{
-	transition: 500ms !important;
-	-webkit-transition: width 500ms !important;
+body {
+	margin: 0;
+	padding: 0;
+
+	background-color: #f7f7f7;
+	color: #333;
+
+	font-family: Arial;
 }
 
-#fixed {
-    height: 36em;
-    overflow: auto;
+#navbar {
+	margin: 0;
+	padding: 0 0;
+	position: fixed;
+	list-style: none;
+
+	background-image: -webkit-linear-gradient(top, #69A85D, #74C565);
+
+	width: 100%;
+	height: 40px;
+
+	-webkit-transition: opacity 0.2s ease, padding 0.2s ease;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+
+	opacity: 0.7;
 }
 
-try
-{
- border-radius:17px;
+#navbar.expanded,
+#navbar:hover {
+	opacity: 1;
+	padding: 8px 0;
 }
 
-.try:hover
-{ 
- opacity:0.5;
- content="";
-	z-index:-1;
-box-shadow:3px -3px 5px gray inset;	
+#topfix {
+	padding-top: 41px;
 }
 
-.try:hover .imgText
-{ 
-	text-align:center; 
-	margin-top: -2.5em;
-	font-size: 3em;
-	display:block;
-	color:red;
-	position:relative;
-	z-index:1;
-	padding-bottom: 75px;
+.navbar-item {
+	float: right;
+	height: 30px;
 }
 
-.imgText 
-{
-	display:none;
+.navbar-item a, 
+#navbar-pres-logo {
+	display: block;
+	padding: 10px 10px;
+	color: #f7f7f7;
+	text-shadow: -1px -1px rgba(0,0,0,0.3), 1px 1px rgba(255,255,255,0.2);
+}
+
+.navbar-item a {
+	text-decoration: none;
+	background-color: rgba(0,0,0,0);
+	box-shadow: inset 0px 0px 0px rgba(0,0,0,0);
+	-webkit-transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-item a:hover {
+	background-color: rgba(0,0,0,0.05);
+	box-shadow: inset 0px 0px 1px rgba(0,0,0,0.1);
+}
+
+#navbar-pres-logo {
+	font-weight: bold;
+}
+
+#navbar-search {
+	float: left;
+	width: 15em;
+	text-align: left;
+}
+
+#search-query {
+	padding: 5px;
+	margin: 5px;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+	outline: 0;
+	-webkit-transition: box-shadow 0.3s ease, width 0.3s ease;
+	width: 10em;
+}
+
+#search-query:focus {
+	box-shadow: 0 0 5px rgba(159, 255, 71, 0.9);
+	width: 15em;
 }
 
 </style>
 
 <script>
-
-jQuery(document).ready(function($) {
-  $("#search-query").focus(function() {
-  	$(this).addClass("span4").removeClass("span2");
-  })
-
-  $("#search-query").blur(function() {
-  	$(this).addClass("span2").removeClass("span4");
-   })
-
-});
-
+(function ($) {
+	$(function() {
+		$(window).scroll(function() {
+			// if (window.scrollY < 10) {
+			// 	$("#navbar").addClass("expanded");
+			// } else {
+			// 	$("#navbar").removeClass("expanded");
+			// }
+		});
+	});
+})(jQuery);
 </script>
 
 </head>
-<body>
-	<div class="navbar pull-right" style="padding-right:1em">
-		<form class="navbar-search">
-			<input type="text" class="span2 search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
+<body ng-controller="navbarController">
+	<nav>
+		<ul id="navbar" when-scrolled="scrollerPosition" ng-class="{expanded : scroll < 10}">
+			<li id="navbar-pres-logo" class="navbar-item">
+				Joe:Pres
+			</li>
+			<li class="navbar-item">
+				<a href="#/thoughts">Thoughts</a>
+			</li>
+			<li class="navbar-item">
+				<a href="#/talks">Talks</a>
+			</li>
+			<li class="navbar-item">
+				<a href="#/endorsement">Endorsement</a>
+			</li>
+			<li class="navbar-item" id="navbar-search">
+				<form class="navbar-search">
+					<input type="text" class="span2 search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
+				</form>
+			</li>
+		</ul>
+	</nav>
+	
+	<div id="topfix" scroll-position="scroll"></div>
 
-
-		</form>
-		<!--<a href="#/" >intro</a>
-		<a href="#/thoughts" >thoughts</a>-->
-	</div>
 	<br>
 
 	<!-- The Thumbnails will apeare here -->
-	<div ng-view style="position:absolute; top:3em">
+	<div ng-view>
 		Here are the thumbnails
-	
 	</div>
 
 
 <script type="text/javascript">
 var presJoe = angular.module('presJoe',[]);
 
+presJoe.directive('scrollPosition', function($window) {
+  return function(scope, element, attrs) {
+    var windowEl = angular.element($window);
+    windowEl.on('scroll', function() {
+      scope.$apply(function() {
+        scope[attrs.scrollPosition] = windowEl.scrollTop();
+      });
+    });
+  };
+});
 
 presJoe.directive('whenScrolled', function() {
     return function(scope, elm, attr) {
@@ -129,6 +196,10 @@ presJoe.config(function ($routeProvider) {
 
 // controlers section
 var controllers = {};
+
+controllers.navbarController = function ($scope) {
+	$scope.scroll = 0;
+};
 
 controllers.simpleCtrl = function ($scope, $http) {
 	$http.get('api_mock/presentations.json').success(function(data) {
