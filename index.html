@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="deanModule" dir="rtl">
+<html ng-app="presJoe" dir="rtl">
 <head>
 	<title>Welcome to Dean Shub's world</title>
 	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
@@ -90,10 +90,10 @@ jQuery(document).ready(function($) {
 
 
 <script type="text/javascript">
-var deanModule = angular.module('deanModule',[]);
+var presJoe = angular.module('presJoe',[]);
 
 
-deanModule.directive('whenScrolled', function() {
+presJoe.directive('whenScrolled', function() {
     return function(scope, elm, attr) {
         var raw = elm[0];
         elm.bind('scroll', function() {
@@ -105,7 +105,7 @@ deanModule.directive('whenScrolled', function() {
 });
 
 //routes section
-deanModule.config(function ($routeProvider) {
+presJoe.config(function ($routeProvider) {
 	$routeProvider
 	.when('/',{
 		controller:'simpleCtrl',
@@ -159,7 +159,7 @@ controllers.simpleCtrl = function ($scope, $http) {
 };
 
 
-deanModule.controller(controllers);
+presJoe.controller(controllers);
 </script>
 <!-- http://www.youtube.com/watch?v=i9MHigUZKEM&feature=player_embedded 
 49:20
