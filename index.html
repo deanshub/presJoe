@@ -18,6 +18,11 @@ body {
 	font-family: Arial;
 }
 
+::selection {
+	background-color: #69A85D;
+	color: #f7f7f7;
+}
+
 #navbar {
 	margin: 0;
 	padding: 0 0;
@@ -78,6 +83,15 @@ body {
 	float: left;
 	width: 15em;
 	text-align: left;
+}
+
+#search-query::-webkit-input-placeholder {
+	text-indent: 0px;
+	-webkit-transition: text-indent 0.2s linear;
+}
+
+#search-query:focus::-webkit-input-placeholder {
+	text-indent: -2em;
 }
 
 #search-query {
