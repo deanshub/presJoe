@@ -130,24 +130,10 @@ deanModule.config(function ($routeProvider) {
 // controlers section
 var controllers = {};
 
-controllers.simpleCtrl = function ($scope) {
-	$scope.presentations = [
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla6.jpg", desc:"sixeth"},
-		{thumbnail:"bla7.jpg", desc:"seventh"}];
+controllers.simpleCtrl = function ($scope, $http) {
+	$http.get('api_mock/presentations.json').success(function(data) {
+		$scope.presentations = data;
+	});
 
 	$scope.addPresentation = function() {
 		alert("Shtuty");
