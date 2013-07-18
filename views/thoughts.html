@@ -1,20 +1,19 @@
 <div>
 	<div id="fixed" when-scrolled="loadMore()">
-
-	<ul class="thumbnails" style="margin: initial">
-		<li ng-repeat="pres in presentations | filter:filter.name" class="span3">
-			<div class="thumbnail try"  ng-class="'try'">
-				<img src="./img/{{pres.thumbnail}}" alt="{{pres.desc}}">			
-				<p ng-class="'imgText'">{{pres.desc}}</p>
-	
-			</div>
+	<ul class="thumbnails">
+		<li style="background-image: url('./img/{{pres.thumbnail}}')" ng-repeat="pres in presentations | filter:filter.name">
+			<a href="#/presentation/{{ pres.id }}">
+				<span class="hidden-text">
+					<i class="icon-facetime-video"></i> Dean Shub
+				</span>
+				{{pres.desc}}
+			</a>
 		</li>
 	</ul>
-
 	<br/>
 </div>
 	<center>
-		<button ng-click="addThought()" class="btn btn-large">+</button>
+		<button ng-click="addPresentation()" class="btn btn-large">+</button>
 	</center>
 
 
