@@ -65,8 +65,18 @@
   -webkit-transition: text-indent 0.2s linear;
 }
 
+#search-query::-webkit-input-placeholder::before {
+  content: '\f002  ';
+  font-family: 'FontAwesome';
+  opacity: 0.5;
+}
+
+#search-query::-webkit-input-placeholder::before:hover {
+  opacity: 1;
+}
+
 #search-query:focus::-webkit-input-placeholder {
-  text-indent: -2em;
+  text-indent: -3em;
 }
 
 #search-query {
