@@ -27,23 +27,15 @@ presJoe.directive('whenScrolled', function() {
 //routes section
 presJoe.config(function ($routeProvider) {
 	$routeProvider
-	.when('/',{
+	.when('/presentations',{
 		controller:'simpleCtrl',
-		templateUrl: 'views/thoughts.html'
+		templateUrl: 'views/presentations.html'
 	})
-	.when('/talks',{
+	.when('/new-presentation',{
 		controller:'simpleCtrl',
-		templateUrl: 'talks.html'
+		templateUrl: 'newPres.html'
 	})
-	.when('/thoughts',{
-		controller:'simpleCtrl',
-		templateUrl: 'views/thoughts.html'
-	})
-	.when('/endorsments',{
-		controller:'simpleCtrl',
-		templateUrl: 'endorsments.html'
-	})
-	.otherwise({redirectTo:'/thoughts'});
+	.otherwise({redirectTo:'/presentations'});
 });
 
 
