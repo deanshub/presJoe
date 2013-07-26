@@ -1,108 +1,47 @@
 <!DOCTYPE html>
-<html ng-app="deanModule" dir="rtl">
+<html ng-app="presJoe" dir="rtl">
 <head>
 	<title>Welcome to Dean Shub's world</title>
-	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css\bootstrap-responsive.min.css">
-	<script type="text/javascript" src="js\lib\angular.min.js"></script>
-	<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js\lib\bootstrap.min.js"></script>
-	<meta charset="windows-1255">
-
-<style>
-.try:hover
-{
- opacity:0.5;
- content:"bla";
- color:red;
-}
-.try:hover .imgText
-{ 
-	text-align:center; 
-	margin-top: -2.5em;
-	font-size: 3em;
-	display:block;
-	color:red;
-}
-
-.imgText 
-{
-	display:none;
-}
-
-</style>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/font-awesome.css" />
+	<link rel="stylesheet" href="css/globals.css" />
+	<link rel="stylesheet" href="css/navbar.css" />
+	<link rel="stylesheet" href="css/presentations.css" />
 </head>
-<body>
-	<div class="navbar pull-right" style="padding-right:1em">
-		<form class="navbar-search">
-			���:
-			<input type="text" class="search-query" placeholder="���"  ng-model="filter.name">
+<body ng-controller="navbarController">
+	<nav>
+		<ul id="navbar" when-scrolled="scrollerPosition" ng-class="{expanded : scroll < 10}">
+			<li id="navbar-pres-logo" class="navbar-item">
+				Joe:Pres
+			</li>
+			<li class="navbar-item">
+				<a href="#/new-presentation">מצגת חדשה</a>
+			</li>
+			<li class="navbar-item">
+				<a href="#/presentations">מצגות אחרונות</a>
+			</li>
+			<li class="navbar-item">
+				<a href="#/presentations">המצגות שלי</a>
+			</li>
+			<li class="navbar-item" id="navbar-search">
+				<form class="navbar-search">
+					<input type="search" class="search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
+				</form>
+			</li>
+		</ul>
+	</nav>
+	
+	<div id="topfix" scroll-position="scroll"></div>
 
-
-		</form>
-		<!--<a href="#/" >intro</a>
-		<a href="#/thoughts" >thoughts</a>-->
-	</div>
 	<br>
 
 	<!-- The Thumbnails will apeare here -->
-	<div ng-view style="position:absolute; top:3em">
+	<div ng-view>
 		Here are the thumbnails
 	</div>
 
-
-<script type="text/javascript">
-var deanModule = angular.module('deanModule',[]);
-
-//routes section
-deanModule.config(function ($routeProvider) {
-	$routeProvider
-	.when('/',{
-		controller:'simpleCtrl',
-		templateUrl: 'views/thoughts.html'
-	})
-	.when('/talks',{
-		controller:'simpleCtrl',
-		templateUrl: 'talks.html'
-	})
-	.when('/thoughts',{
-		controller:'simpleCtrl',
-		templateUrl: 'views/thoughts.html'
-	})
-	.when('/endorsments',{
-		controller:'simpleCtrl',
-		templateUrl: 'endorsments.html'
-	})
-	.otherwise({redirectTo:'/thoughts'});
-});
-
-
-// controlers section
-var controllers = {};
-
-controllers.simpleCtrl = function ($scope) {
-	$scope.presentations = [
-		{thumbnail:"bla.jpg", desc:"first"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla6.jpg", desc:"sixeth"},
-		{thumbnail:"bla7.jpg", desc:"seventh"}];
-
-	$scope.addPresentation = function() {
-		$scope.thoughts.push({
-			title: $scope.newPresentation.thumbnail,
-			desc: $scope.newPresentation.desc
-		});
-	};
-};
-
-
-deanModule.controller(controllers);
-</script>
-<!-- http://www.youtube.com/watch?v=i9MHigUZKEM&feature=player_embedded 
-49:20
--->
+<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js\lib\angular.min.js"></script>
+<script type="text/javascript" src="js\presAngular.js"></script>
 </body>
 </html>
