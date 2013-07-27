@@ -7,7 +7,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":"api_mock\\impresslite.htm"
 },
 {
 "id" : 2,
@@ -17,7 +17,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":"api_mock\\sparta.htm"
 },
 {
 "id" : 3,
@@ -27,7 +27,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 4,
@@ -37,7 +37,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 5,
@@ -47,7 +47,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 6,
@@ -57,7 +57,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 7,
@@ -67,7 +67,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 8,
@@ -77,7 +77,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 9,
@@ -87,7 +87,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 10,
@@ -97,7 +97,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 11,
@@ -107,7 +107,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 12,
@@ -117,7 +117,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 13,
@@ -127,7 +127,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 14,
@@ -137,7 +137,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 15,
@@ -147,7 +147,7 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 },
 {
 "id" : 16,
@@ -157,6 +157,6 @@
 "tags":"bla,shtut,klum",
 "created_at":"2013-07-16 18:02:22",
 "updated_at":"2013-07-16 18:02:22",
-"contents":"<html></html>"
+"contents":""
 }
 ]
