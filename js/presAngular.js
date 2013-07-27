@@ -58,8 +58,9 @@ controllers.navbarController = function ($scope) {
 };
 
 controllers.simpleCtrl = function ($scope, $http) {
-	$http.get('api_mock/presentations.json').success(function(data) {
+	$http.get('presJoe/public/presentations').success(function(data) {
 		$scope.presentations = data;
+		console.log(data);
 	});
 
 	$scope.addPresentation = function() {
