@@ -1,183 +1,47 @@
 <!DOCTYPE html>
-<html ng-app="deanModule" dir="rtl">
+<html ng-app="presJoe" dir="rtl">
 <head>
 	<title>Welcome to Dean Shub's world</title>
-	<link rel="stylesheet" type="text/css" href="css\bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css\bootstrap-responsive.min.css">
-	<script type="text/javascript" src="js\lib\angular.min.js"></script>
-	<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js\lib\bootstrap.min.js"></script>
-	<meta charset="windows-1255">
-
-<style>
-
-.searchMov
-{
-	transition: 500ms !important;
-	-webkit-transition: width 500ms !important;
-}
-
-#fixed {
-    height: 36em;
-    overflow: auto;
-}
-
-try
-{
- border-radius:17px;
-}
-
-.try:hover
-{ 
- opacity:0.5;
- content="";
-	z-index:-1;
-box-shadow:3px -3px 5px gray inset;	
-}
-
-.try:hover .imgText
-{ 
-	text-align:center; 
-	margin-top: -2.5em;
-	font-size: 3em;
-	display:block;
-	color:red;
-	position:relative;
-	z-index:1;
-	padding-bottom: 75px;
-}
-
-.imgText 
-{
-	display:none;
-}
-
-</style>
-
-<script>
-
-jQuery(document).ready(function($) {
-  $("#search-query").focus(function() {
-  	$(this).addClass("span4").removeClass("span2");
-  })
-
-  $("#search-query").blur(function() {
-  	$(this).addClass("span2").removeClass("span4");
-   })
-
-});
-
-</script>
-
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/font-awesome.css" />
+	<link rel="stylesheet" href="css/globals.css" />
+	<link rel="stylesheet" href="css/navbar.css" />
+	<link rel="stylesheet" href="css/presentations.css" />
 </head>
-<body>
-	<div class="navbar pull-right" style="padding-right:1em">
-		<form class="navbar-search">
-			<input type="text" class="span2 search-query searchMov" id="search-query" placeholder="���"  ng-model="filter.name">
+<body ng-controller="navbarController">
+	<nav>
+		<ul id="navbar" when-scrolled="scrollerPosition" ng-class="{expanded : scroll < 10}">
+			<li id="navbar-pres-logo" class="navbar-item">
+				Joe:Pres
+			</li>
+			<li class="navbar-item">
+				<a href="#/new-presentation">מצגת חדשה</a>
+			</li>
+			<li class="navbar-item">
+				<a href="#/presentations">מצגות אחרונות</a>
+			</li>
+			<li class="navbar-item">
+				<a href="#/presentations">המצגות שלי</a>
+			</li>
+			<li class="navbar-item" id="navbar-search">
+				<form class="navbar-search">
+					<input type="search" class="search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
+				</form>
+			</li>
+		</ul>
+	</nav>
+	
+	<div id="topfix" scroll-position="scroll"></div>
 
-
-		</form>
-		<!--<a href="#/" >intro</a>
-		<a href="#/thoughts" >thoughts</a>-->
-	</div>
 	<br>
 
 	<!-- The Thumbnails will apeare here -->
-	<div ng-view style="position:absolute; top:3em">
+	<div ng-view>
 		Here are the thumbnails
-	
 	</div>
 
-
-<script type="text/javascript">
-var deanModule = angular.module('deanModule',[]);
-
-
-deanModule.directive('whenScrolled', function() {
-    return function(scope, elm, attr) {
-        var raw = elm[0];
-        elm.bind('scroll', function() {
-            if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-                scope.$apply(attr.whenScrolled);
-            }
-        });
-    };
-});
-
-//routes section
-deanModule.config(function ($routeProvider) {
-	$routeProvider
-	.when('/',{
-		controller:'simpleCtrl',
-		templateUrl: 'views/thoughts.html'
-	})
-	.when('/talks',{
-		controller:'simpleCtrl',
-		templateUrl: 'talks.html'
-	})
-	.when('/thoughts',{
-		controller:'simpleCtrl',
-		templateUrl: 'views/thoughts.html'
-	})
-	.when('/endorsments',{
-		controller:'simpleCtrl',
-		templateUrl: 'endorsments.html'
-	})
-	.otherwise({redirectTo:'/thoughts'});
-});
-
-
-// controlers section
-var controllers = {};
-
-controllers.simpleCtrl = function ($scope) {
-	$scope.presentations = [
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla2.jpg", desc:"second"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla3.jpg", desc:"third"},
-		{thumbnail:"bla4.jpg", desc:"fourth"},
-		{thumbnail:"bla5.jpg", desc:"fifth"},
-		{thumbnail:"bla6.jpg", desc:"sixeth"},
-		{thumbnail:"bla7.jpg", desc:"seventh"}];
-
-	$scope.addPresentation = function() {
-		alert("Shtuty");
-		$scope.presentation.push({
-			thumbnail: title1,
-			desc: desc1
-		});
-	};
-
-	$scope.shtuty = function() {
-		alert("Shtuty");
-	};	
-
-	$scope.shtuty2 = function() {
-		alert("Bye");
-	};
-
-	$scope.loadMore = function() {
-        for (var i = 0; i < 4; i++) {
-            $scope.presentations.push({thumbnail:"bla"+(i+2)+".jpg", desc:i});
-        }
-    };	
-};
-
-
-deanModule.controller(controllers);
-</script>
-<!-- http://www.youtube.com/watch?v=i9MHigUZKEM&feature=player_embedded 
-49:20
--->
-	
+<script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js\lib\angular.min.js"></script>
+<script type="text/javascript" src="js\presAngular.js"></script>
 </body>
 </html>
