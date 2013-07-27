@@ -76,3 +76,11 @@ controllers.simpleCtrl = function ($scope, $http) {
 
 
 presJoe.controller(controllers);
+
+$(document).ready(function(){
+	$('form').garlic( {
+      onRetrieve: function ( elem, retrievedValue ) {
+      	$('#search-query').focus();
+      }
+  } );
+});

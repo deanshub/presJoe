@@ -24,8 +24,8 @@
 				<a href="#/presentations">המצגות שלי</a>
 			</li>
 			<li class="navbar-item" id="navbar-search">
-				<form class="navbar-search">
-					<input type="search" class="search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
+				<form class="navbar-search" id="navbar-search-form" data-domain="true" data-persist="garlic" method="POST"  data-destroy="false">
+						<input type="search" class="search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
 				</form>
 			</li>
 		</ul>
@@ -42,6 +42,7 @@
 
 <script type="text/javascript" src="js\lib\jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js\lib\angular.min.js"></script>
+<script type="text/javascript" src="js\lib\garlic.min.js"></script>
 <script type="text/javascript" src="js\presAngular.js"></script>
 </body>
 </html>
