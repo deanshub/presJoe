@@ -1,8 +1,8 @@
 <div>
 	<div id="fixed" when-scrolled="loadMore()">
 	<ul class="thumbnails">
-		<li style="background-image: url('./img/{{pres.thumbnail}}')" ng-repeat="pres in presentations | filter:filter.name">
-			<a href="{{ pres.contents }}">
+		<li style="background-image: url('presJoe/public/assets/{{pres.title}}/{{pres.title}}.jpg')" ng-repeat="pres in presentations | filter:filter.name">
+			<a href="presJoe/public/assets/{{pres.title}}/{{ pres.contents }}">
 				<span class="hidden-text">
 					<i class="icon-facetime-video"></i> Dean Shub
 				</span>
