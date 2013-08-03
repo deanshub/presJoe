@@ -10,7 +10,8 @@ class FileController extends BaseController {
     public function upload()
     {
         Input::file('hamin_file')->move(public_path()."/assets", "x.jpg");
-        exec('phantomjs '.public_path().'\screen_capture.js levral http://localhost/joePres/presJoe/public');
+        // die("phantomjs ".public_path()."\assets\screen_capture.js tmp http://localhost/joePres/presJoe/public");
+        exec("phantomjs ".public_path()."\assets\screen_capture.js tmp http://localhost/joePres/presJoe/public");
         return Redirect::to('/');
     }
 
