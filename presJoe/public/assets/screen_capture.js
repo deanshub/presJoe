@@ -6,7 +6,7 @@ if (system.args.length !== 3) {
 }
 var page = require('webpage').create();
 page.open(system.args[2], function () {
-	console.log("C:/Users/dean/Documents/GitHub/presJoe/presJoe/public/assets/"+system.args[1]+"/"+system.args[1]+".png");
+	// console.log("C:/Users/dean/Documents/GitHub/presJoe/presJoe/public/assets/"+system.args[1]+"/"+system.args[1]+".png");
     page.render("C:/Users/dean/Documents/GitHub/presJoe/presJoe/public/assets/"+system.args[1]+"/"+system.args[1]+".png");
     phantom.exit();
 });
