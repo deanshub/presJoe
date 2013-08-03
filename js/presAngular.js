@@ -44,6 +44,17 @@ var controllers = {};
 
 controllers.navbarController = function ($scope) {
 	$scope.scroll = 0;
+	$scope.filter={"name":""};
+
+	$scope.reloadFilter= function() {
+		$scope.filter.name = localStorage['search-query'];
+	}
+
+	$scope.filterChange = function() {
+		localStorage['search-query'] = $scope.filter.name;
+	}
+
+	$scope.$on('$viewContentLoaded', $scope.reloadFilter());
 };
 
 controllers.simpleCtrl = function ($scope, $http) {
@@ -71,16 +82,10 @@ controllers.simpleCtrl = function ($scope, $http) {
         for (var i = 0; i < 4; i++) {
             $scope.presentations.push({thumbnail:"bla"+(i+2)+".jpg", desc:i});
         }
-    };	
+    };
+
+    
 };
 
 
 presJoe.controller(controllers);
-
-$(document).ready(function(){
-	$('form').garlic( {
-      onRetrieve: function ( elem, retrievedValue ) {
-      	$('#search-query').focus();
-      }
-  } );
-});
