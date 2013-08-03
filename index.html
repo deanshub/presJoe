@@ -24,8 +24,8 @@
 				<a href="#/presentations">המצגות שלי</a>
 			</li>
 			<li class="navbar-item" id="navbar-search">
-				<form class="navbar-search">
-					<input type="search" class="search-query searchMov" id="search-query" placeholder="חפש"  ng-model="filter.name">
+				<form class="navbar-search" id="navbar-search-form" method="POST" >
+						<input type="search" class="search-query searchMov" ng-change="filterChange()" id="search-query" placeholder="חפש"  ng-model="filter.name">
 				</form>
 			</li>
 		</ul>
